@@ -1,34 +1,10 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "text": "create something",
-      "day": "Heta or anidda",
-      "reminder": true
-    },
-    {
-      "id": 2,
-      "text": "design a flyer",
-      "day": "Heta or anidda",
-      "reminder": true
-    },
-    {
-      "id": 4,
-      "text": "Write something",
-      "day": "Heta or anidda",
-      "reminder": true
-    },
-    {
-      "text": "take tests",
-      "day": "monday",
+      "text": "Do nothing",
+      "day": "dhanne naa",
       "reminder": true,
-      "id": 5
-    },
-    {
-      "text": "new test",
-      "day": "friday",
-      "reminder": true,
-      "id": 6
+      "id": 1
     }
   ]
 }
