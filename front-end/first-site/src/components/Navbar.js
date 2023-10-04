@@ -1,59 +1,57 @@
-import { Component } from "react";
+import React, { Component } from "react";
 
-class Navbar extends Component {
-  state = { clicked: false };
+export default class Navbar extends Component {
+  constructor(props) {
+    super(props);
 
-  componentDidMount() {
-    // Add a click event listener to the entire document
-    document.addEventListener("click", this.handleOutsideClick);
-  }
-
-  componentWillUnmount() {
-    // Remove the click event listener when the component unmounts
-    document.removeEventListener("click", this.handleOutsideClick);
+    this.state = {
+      clicked: false,
+    };
   }
 
   handleClick = () => {
-    this.setState({ clicked: !this.state.clicked });
-  };
-
-  handleOutsideClick = (event) => {
-    // Check if the click is outside the menu and the menu is open
-    if (
-      this.state.clicked &&
-      !document.getElementById("navbar").contains(event.target) &&
-      !document.getElementById("mobile").contains(event.target)
-    ) {
-      this.setState({ clicked: false });
-    }
+    const { clicked } = this.state;
+    this.setState({ clicked: !clicked }, () => {
+      // Call the callback function passed from the parent component
+      this.props.onNavbarClick(this.state.clicked);
+    });
   };
 
   render() {
     return (
-      <>
-        <nav>
-          <div id="mobile" onClick={this.handleClick}>
-            <i
-              id="bar"
-              className={this.state.clicked ? "fas fa-times" : "fas fa-bars"}
-            ></i>
-          </div>
-          <div
-            id="navbar"
-            className={this.state.clicked ? "navbar active" : "navbar"}
-          >
-            <button className="btn">Login</button>
-            <button
-              className="btn"
-              style={{ background: "white", color: "black" }}
-            >
-              Sign in
+      <nav>
+        <div class="dropdown">
+          <button
+            class="fas fa-bars"
+            type="button"
+            id="dropdownMenu2"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            onClick={this.handleClick}
+          ></button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <button class="dropdown-item" type="button">
+              Action
+            </button>
+            <button class="dropdown-item" type="button">
+              Another action
+            </button>
+            <button class="dropdown-item" type="button">
+              Something else here
             </button>
           </div>
-        </nav>
-      </>
+        </div>
+        <div id="navbar" className="navbar">
+          <button className="btn">Login</button>
+          <button
+            className="btn"
+            style={{ background: "white", color: "black" }}
+          >
+            Sign Up
+          </button>
+        </div>
+      </nav>
     );
   }
 }
-
-export default Navbar;

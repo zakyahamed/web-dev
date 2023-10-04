@@ -36,7 +36,7 @@ function SearchForm({ onSearch }) {
         <option value="food">Search for Food</option>
         <option value="location">Search for Locations</option>
       </select>
-      <button className="search-button" type="submit">
+      <button className="btn" type="submit">
         {`search ${searchType === "food" ? "food" : "location"}`}
       </button>
     </form>

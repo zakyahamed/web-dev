@@ -1,13 +1,27 @@
 import Navbar from "./components/Navbar";
-import Form from "./components/Form";
+import Menubar from "./components/Menubar";
 
-const App = () => {
-  return (
-    <div className="home">
-      <Navbar />
-      <Form />
-    </div>
-  );
-};
+import React, { Component } from "react";
 
-export default App;
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      clicked: false,
+    };
+  }
+
+  handleNavbarClick = (clicked) => {
+    this.setState({ clicked });
+  };
+
+  render() {
+    return (
+      <div>
+        <Navbar onNavbarClick={this.handleNavbarClick} />
+        <Menubar isMenuOpen={this.state.clicked} />
+      </div>
+    );
+  }
+}
